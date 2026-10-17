@@ -1,0 +1,4 @@
+-r requirements.txt
+pygame-ce
+# Optional acceleration for the standalone heuristic engine and arena.py
+numba

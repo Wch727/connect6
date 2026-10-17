@@ -1,0 +1,22 @@
+/* A quiet study board, sharing the main game's wood and ink palette. */
+main{grid-template-columns:minmax(0,1fr) 300px;gap:36px;max-width:1200px;padding-top:26px}
+header{max-width:1200px;padding-top:20px;padding-bottom:20px}
+.table-heading{margin-bottom:16px}h1{font-size:25px;letter-spacing:1px}.eyebrow{letter-spacing:1px}
+.players{margin-bottom:17px}.turn-label{margin-left:auto;font-size:12px;color:var(--accent)}
+.numbers{font-size:11px!important;margin:0!important;gap:5px!important;color:var(--muted)}
+.timeline{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.navigation{display:flex;gap:4px}.navigation button{height:31px;min-width:31px;background:white;border:1px solid var(--line);border-radius:4px;color:var(--ink);font-size:18px}
+.timeline input{flex:1;min-width:50px;accent-color:var(--accent);cursor:pointer}.timeline output{min-width:74px;text-align:right;font:12px Consolas,monospace;color:var(--muted)}
+.settings fieldset{margin:0 0 17px}.time-field{display:flex;flex-direction:row;align-items:center;justify-content:space-between}.time-field span{display:flex;align-items:center;gap:8px}.time-field input{width:85px}
+.analysis{margin-top:18px;padding-top:17px;border-top:1px solid var(--line)}.secondary{width:100%;background:var(--bluewash);border:1px solid #c6d5e1;border-radius:5px;color:var(--accent);padding:11px 8px;font-size:13px}
+.analysis p{margin:9px 0 0;line-height:1.7}.analysis .quiet{padding-bottom:0}
+.record-tools{display:flex;align-items:center;gap:10px;margin-bottom:10px}.file-button{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:4px;padding:7px 11px;font-size:12px;color:var(--accent);cursor:pointer;white-space:nowrap;background:white}
+.file-button:focus-within{outline:3px solid #679bc2;outline-offset:2px}.file-button input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.record-tools select{padding:6px 3px;font-size:11px;width:65px;margin-left:auto}.record-tools .quiet{white-space:nowrap}
+.records{max-height:330px}.record button{border:0;background:none;text-align:left;color:var(--ink);font:12px Consolas,monospace;padding:7px 4px;cursor:pointer;border-radius:3px}.record button.future{opacity:.35}.record button.current{background:var(--bluewash);outline:1px solid #b7cbdc}.record button:hover{background:var(--bluewash)}
+.record button i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}.record button i.b{background:#263441}.record button i.w{background:#fafafa;border:1px solid #aaa}
+.point .hint{display:grid;place-items:center;position:absolute;width:70%;height:70%;border-radius:50%;border:2px solid #315b7a;background:#edf5ffcf;color:#234b69;font:600 clamp(8px,1.05vw,15px) Consolas,monospace;z-index:3;pointer-events:none}
+.point.last .piece{font-size:clamp(6px,.8vw,11px)}.point.last .piece:after{inset:4%;border-color:#bf563b;border-width:2px}.point.last .piece.black:after{border-color:#f5a585}
+.rule-note{margin-top:0}.status-bar{margin-top:13px;margin-bottom:8px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[hidden]{display:none!important}
+@media(max-width:920px){main{grid-template-columns:minmax(0,1fr);max-width:760px}aside{display:grid;grid-template-columns:1fr 1fr;gap:20px}aside footer{grid-column:1/-1}.records{max-height:340px}}
+@media(max-width:560px){main{padding:20px 20px}header{padding:18px 20px}aside{display:block}.table-heading{gap:8px}h1{font-size:21px}.timeline{gap:8px}.navigation{gap:2px}.navigation button{min-width:26px}.timeline output{min-width:64px}.wordmark{display:none}}

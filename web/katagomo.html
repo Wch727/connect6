@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Katagomo · 六子棋</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/katagomo.css"><script src="/katagomo.js" defer></script></head>
+<body>
+<header><a class="brand" href="/" aria-label="Katagomo 六子棋"><span class="brand-stones">●<span>○</span></span><strong>六子棋</strong><span class="wordmark">KATAGOMO</span></a><span class="local"><i></i><span id="engine-status">本地引擎</span></span></header>
+<main>
+ <section class="table-area" aria-label="对弈与复盘棋盘">
+  <div class="table-heading"><div><span class="eyebrow" id="mode-caption">十九路 · 对弈</span><h1 id="heading">与 Katagomo 对弈</h1></div><label class="check-field numbers"><input id="numbers" type="checkbox" checked> 显示手数</label></div>
+  <div class="players"><div class="player" id="black-player"><span class="stone-icon black"></span><div><strong>黑方</strong><small id="black-name">你</small></div><span id="black-turn" class="turn-label"></span></div><span class="versus">VS</span><div class="player" id="white-player"><span class="stone-icon white"></span><div><strong>白方</strong><small id="white-name">Katagomo</small></div><span id="white-turn" class="turn-label"></span></div></div>
+  <div class="board-frame"><div class="coordinates top" aria-hidden="true"></div><div class="coordinates left" aria-hidden="true"></div><div class="board" id="board" role="group" aria-label="19乘19棋盘，方向键移动，回车落子"><svg class="grid-lines" viewBox="0 0 720 720" aria-hidden="true"></svg><div class="intersections" id="intersections"></div></div></div>
+  <div class="status-bar"><span id="status" role="status" aria-live="polite">选择执子，开始对局。</span><button id="undo" class="quiet" disabled>↶ 悔棋</button></div>
+  <div class="timeline" aria-label="棋谱回放"><div class="navigation"><button id="first" title="回到开头" aria-label="回到开头">|‹</button><button id="previous" title="上一颗" aria-label="上一颗">‹</button><button id="next" title="下一颗" aria-label="下一颗">›</button><button id="last" title="跳到最后" aria-label="跳到最后">›|</button></div><input id="cursor" type="range" min="0" max="0" value="0" aria-label="棋谱进度"><output id="progress">0 / 0 子</output></div>
+  <p id="notice" role="alert" hidden></p>
+  <p class="rule-note">黑方首回合一子，此后每回合两子。连成六子或以上获胜。</p>
+ </section>
+ <aside>
+  <section class="panel settings"><div class="section-heading"><h2>棋盘</h2><span>Katagomo</span></div>
+   <form id="settings">
+    <fieldset><legend class="sr-only">使用方式</legend><div class="segmented"><label><input type="radio" name="mode" value="play" checked><span>对弈</span></label><label><input type="radio" name="mode" value="review"><span>摆棋 / 复盘</span></label></div></fieldset>
+    <fieldset><legend>对弈时我执</legend><div class="segmented"><label><input type="radio" name="human" value="1" checked><span>● 黑方</span></label><label><input type="radio" name="human" value="-1"><span>○ 白方</span></label></div></fieldset>
+    <label class="field time-field">每颗思考时间 <span><input id="seconds" type="number" min="0.1" max="30" step="0.1" value="1" required> 秒</span></label>
+    <button class="primary" id="start" type="submit">开始对局 <span>→</span></button>
+   </form>
+   <div class="analysis"><button id="analyze" type="button" class="secondary" disabled>看看 Katagomo 推荐</button><p id="hint-text" class="field-hint">推荐只作预览，确认后再落子。</p><button id="apply-hint" type="button" class="quiet" hidden>按推荐落子 →</button></div>
+  </section>
+  <section class="panel record-panel"><div class="section-heading"><h2>棋谱</h2><span id="record-label">还没有落子</span></div>
+   <div class="record-tools"><label class="file-button">导入棋谱<input id="import-file" type="file" accept=".sgf,.json,application/json" aria-label="导入 SGF 或 JSON 棋谱"></label><select id="export-format" aria-label="导出格式"><option value="sgf">SGF</option><option value="json">JSON</option></select><button id="export" class="quiet" disabled>保存 ↓</button></div>
+   <div id="records" class="records"><p class="empty">导入棋谱，逐步复盘。<br>也可以直接开始一局。</p></div>
+  </section>
+  <footer>本地运行 · 棋谱保存在你的电脑<br><span id="review-note">首次启动引擎需要几秒钟</span></footer>
+ </aside>
+</main>
+</body>
+</html>

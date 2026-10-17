@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>连六 · Connect6</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><a class="brand" href="/" aria-label="连六首页"><span class="brand-stones">●<span>○</span></span><strong>连六</strong><span class="wordmark">CONNECT6</span></a><span class="local"><i></i> 本地对弈</span></header>
+<main>
+ <section class="table-area" aria-label="对弈棋盘">
+  <div class="table-heading"><div><span class="eyebrow">十九路 · 六子棋</span><h1>两子之间，落定胜负。</h1></div><span id="move-count" class="move-count">0 子</span></div>
+  <div class="players">
+   <div class="player active" id="black-player"><span class="stone-icon black"></span><div><strong>黑方</strong><small id="black-name">你</small></div><time id="black-time">10:00</time></div>
+   <span class="versus">VS</span>
+   <div class="player" id="white-player"><span class="stone-icon white"></span><div><strong>白方</strong><small id="white-name">启发式 AI</small></div><time id="white-time">10:00</time></div>
+  </div>
+  <div class="board-frame"><div class="coordinates top" aria-hidden="true"></div><div class="coordinates left" aria-hidden="true"></div><div class="board" id="board" role="group" aria-label="19 乘 19 棋盘，方向键移动，回车落子"><svg class="grid-lines" viewBox="0 0 720 720" aria-hidden="true"></svg><div class="intersections" id="intersections"></div></div></div>
+  <div class="status-bar"><span id="status" role="status" aria-live="polite">设置好对局，开始第一手。</span><div class="board-actions"><button id="undo" class="quiet" disabled>↶ 悔一步</button><button id="export" class="quiet" disabled>导出棋谱 ↓</button></div></div>
+  <p id="notice" role="alert" hidden></p>
+  <p class="rule-note">黑方首回合落一子，此后每回合两子。横、竖、斜任一方向连成六子或以上即胜。</p>
+ </section>
+ <aside>
+  <section class="panel settings"><div class="section-heading"><h2>对局设置</h2><span>新一局生效</span></div>
+   <form id="settings">
+    <fieldset><legend>我执</legend><div class="segmented"><label><input type="radio" name="human" value="1" checked><span>● 黑方 · 先手</span></label><label><input type="radio" name="human" value="-1"><span>○ 白方 · 后手</span></label></div></fieldset>
+    <label class="field">AI 对手<select id="model" name="model"><option value="heuristic">启发式 AI · 无需权重</option></select></label>
+    <p class="field-hint" id="model-hint">即开即玩。神经网络模型从本地 checkpoints 目录读取。</p>
+    <div class="field-row"><label class="field">搜索次数<input id="simulations" type="number" min="1" max="2000" value="100" required></label><label class="field">每方用时 / 分钟<input id="minutes" type="number" min="1" max="120" value="10" required></label></div>
+    <label class="field">推理设备<select id="device"><option value="cpu">CPU</option><option value="auto">自动选择 CPU / CUDA</option><option value="cuda">CUDA</option></select></label>
+    <label class="check-field"><input id="rules" type="checkbox" checked><span>规则辅助<span class="field-hint">优先检查获胜续着和防守点</span></span></label>
+    <label class="check-field"><input id="book" type="checkbox" checked><span>开局库<span class="field-hint" id="book-hint">优先使用开局库，未命中时由 AI 搜索</span></span></label>
+<button class="primary" id="start" type="submit">开始对局 <span>→</span></button>
+   </form>
+  </section>
+  <section class="panel record-panel"><div class="section-heading"><h2>落子记录</h2><span id="record-label">本局棋谱</span></div><div id="records" class="records"><p class="empty">棋盘还很安静。<br>开始对局后，落子会记录在这里。</p></div></section>
+  <footer>模型在本机运行 · 页面无需联网<br>比赛版与历史 GUI 仍可独立使用</footer>
+ </aside>
+</main>
+</body></html>
