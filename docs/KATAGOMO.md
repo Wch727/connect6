@@ -1,6 +1,36 @@
 # Katagomo 对弈与复盘
 
-安装 NumPy，启动本地页面：
+## 下载 Katagomo
+
+本界面已验证的版本是官方 [KataGo Connect6 20250505](https://github.com/hzyhhzy/KataGomo/releases/tag/ConnectSix_20250505)。在发行页的 **Assets** 中下载六子棋 OpenCL 整合包：
+
+[KatagomoConnect6_20250505_OpenCL-only.7z](https://github.com/hzyhhzy/KataGomo/releases/download/ConnectSix_20250505/KatagomoConnect6_20250505_OpenCL-only.7z)
+
+完整解压，保留文件夹结构。将软件文件夹放在本仓库旁边，例如：
+
+```text
+workspace/
+├── connect6/
+└── KatagomoConnect6_20250505_OpenCL-only/
+    ├── engine.cfg
+    ├── engine/
+    │   ├── connectsix19x_opencl.exe
+    │   └── ... 其他运行库
+    └── weights/
+        └── connectsix19x_b18trans.bin.gz
+```
+
+本界面使用 Windows OpenCL 引擎，需要本机有可用的 OpenCL 显卡驱动。
+
+### 模型文件
+
+Katagomo 通过神经网络评估棋盘并结合搜索选点。`engine/connectsix19x_opencl.exe` 是引擎程序，`weights/connectsix19x_b18trans.bin.gz` 是官方训练的 19 路神经网络模型；启动命令通过 `-model` 加载它。保留整合包里的模型即可使用，无需自行训练。
+
+若使用的目录中缺少该文件，可从同一发行页下载 [connectsix19x_b18trans.bin.gz](https://github.com/hzyhhzy/KataGomo/releases/download/ConnectSix_20250505/connectsix19x_b18trans.bin.gz)，放入软件目录的 `weights/`。文件保持 `.bin.gz` 格式。引擎目录里的运行库和根目录的 `engine.cfg` 也需要保留。
+
+## 启动本地界面
+
+在本仓库目录安装 NumPy，启动页面：
 
 ```sh
 python -m pip install numpy
@@ -15,7 +45,7 @@ python -X utf8 katagomo_ui.py
 python -X utf8 katagomo_ui.py --katagomo-dir "D:/KatagomoConnect6_20250505_OpenCL-only"
 ```
 
-使用已有的 Windows OpenCL 引擎和 `connectsix19x_b18trans.bin.gz` 权重。引擎、权重由 Katagomo 原软件提供，需保留在本机。本项目通过 GTP 调用它们。
+本项目通过 GTP 调用本机 Katagomo。Katagomo 引擎与模型从上面的官方发行页取得。
 
 ## 操作
 

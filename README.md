@@ -17,7 +17,7 @@ python -m pip install numpy
 | Katagomo | `python -X utf8 katagomo_ui.py` | http://127.0.0.1:8766 | 对弈、推荐落点、SGF/JSON 棋谱导入导出与逐步复盘 |
 | 项目 AI | `python -X utf8 web_ui.py` | http://127.0.0.1:8765 | 启发式对弈，或加载本项目训练的模型 |
 
-Katagomo 界面调用本机已有的 Windows OpenCL 引擎与权重，启动时自动查找软件目录，也可通过 `--katagomo-dir` 指定。默认每颗思考 1 秒。见 [Katagomo 使用说明](docs/KATAGOMO.md)。
+首次使用 Katagomo，先从官方 [六子棋发行页](https://github.com/hzyhhzy/KataGomo/releases/tag/ConnectSix_20250505)下载 `KatagomoConnect6_20250505_OpenCL-only.7z`，完整解压后放在本仓库旁边。界面调用其中的 Windows OpenCL 引擎与官方神经网络模型，默认每颗思考 1 秒。完整下载步骤、目录示例和 `--katagomo-dir` 用法见 [Katagomo 使用说明](docs/KATAGOMO.md)。
 
 项目 AI 页面默认使用无需权重的启发式；加载神经网络需要安装 PyTorch，并将权重放入 `checkpoints/`。见 [网页版说明](docs/WEB_UI.md)和[启发式策略](docs/HEURISTIC.md)。
 
